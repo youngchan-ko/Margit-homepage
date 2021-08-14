@@ -1,7 +1,6 @@
 // ---------------------------------------Contact-------------------------
 
-// 바이오그라피 세이브 삭제 선택시 작동 안함
-// function BiographyDeleteSaveEvent()다시 만들어야 함.
+
 
 // ---------------------------------------Biography---------------------
 
@@ -111,7 +110,7 @@ BiographySubMenuEvent.prototype = {
 
 // ---------------------------------------News---------------------
 
-
+// 서브메뉴 갱신부터 살펴보기
 
 
 // ------------------------------------Gallery--------------------
@@ -249,6 +248,8 @@ GallerySubMenuEvent.prototype = {
     }
 }
 
+
+// -------------------------------------공통 로직------------------
 //서브메뉴 갱신하기
 function WriteSubmenu(submenu, mainValue) {
     this.mainValue = mainValue;
@@ -262,7 +263,7 @@ function WriteSubmenu(submenu, mainValue) {
     this.writeSubtitles();
 }
 WriteSubmenu.prototype = {
-    //갤러리 subtitle option만들기
+    //subtitle option만들기
     makeOptions : function(){
         var options = '';
         for(i=0; i<this.submenu.length; i++){
@@ -275,7 +276,7 @@ WriteSubmenu.prototype = {
         $(".option_target").after(options);
     },
   
-    //갤러리 subtitle HTML만들기
+    //subtitle HTML만들기
     writeSubtitles : function(){
         if(this.mainMenuWrap.next().length > 0){
             this.mainMenuWrap.next().remove();
@@ -321,7 +322,9 @@ function mainMenuEvent(){
             break;
 
         case 'News':
+            var examNewsSubmenu = ['neue Text(new text)','Änderung(modify)','Löschung(delete)'];
             console.log(mainMenu.value);
+            new WriteSubmenu(examNewsSubmenu,mainMenu.value);
             break;
         
         case 'Biography':

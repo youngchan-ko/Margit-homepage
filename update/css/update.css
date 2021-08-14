@@ -10089,3 +10089,7 @@ h3 {
 .biography_table{
   max-width: 100%;
 }
+
+.ck-editor__editable{
+  min-height: 400px;
+}

@@ -12,6 +12,7 @@
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
         <link href="../bootstrap5.0.2.min.css" rel="stylesheet" />
         <link href="css/update.css" rel="stylesheet" />
+        <script src="../ckeditor5-build-classic-29.1.0/ckeditor5-build-classic/ckeditor.js"></script>
     </head>
     <body>
         <!-- Navigation-->
@@ -97,9 +98,17 @@
         </button>
         
         
-        
+        <!-- 뉴스업데이트에 ckeditor설치해서 보여주기 -->
 
-        
+        <!-- <div class="news_update_wrap" id="news_update_textarea">
+            <script>
+                ClassicEditor
+                .create( document.querySelector( '#news_update_textarea' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+            </script>
+        </div> -->
         
         
         
@@ -111,7 +120,19 @@
         <script src="../jquery3_5_1.js"></script>
         <script src="../bootstrap4_6_0.js"></script>
         <script src="script/update.js"></script>
+        <script>
+            ClassicEditor
+            .create( document.querySelector( '#news_update_textarea' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+        </script>
         
+        <script type="rv-template" id="news_textarea">
+            <div class="news_update_wrap" id="news_update_textarea">
+                
+            </div>
+        </script>
 
         <!-- 바이오그라피 삭제 선택시 테이블 템플릿 -->
         <script type="rv-template" id="biography_table_wrap">
