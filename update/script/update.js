@@ -109,8 +109,50 @@ BiographySubMenuEvent.prototype = {
 
 
 // ---------------------------------------News---------------------
+//뉴스 서브메뉴 선택에 따른 뷰 보여주기
+//수정 선택시에 데이터 받아서 채워주기 변경해야함.
+function NewsSubMenuEvent(){
+    this.menuWrap = $('.menu_wrap');
+    this.submenuValue = $('#submenu')[0].value;
+    this.textInsertWrap = $('#news_textarea')[0].innerHTML;
+    this.saveBtn = $('.save_btn')[0];
+    this.deleteBtn = $('.delete_btn')[0];
+    this.writeHtml();
+}
+NewsSubMenuEvent.prototype = {
+    //사용자 옵션 선택에 따른 입력,수정,삭제 뷰 보여주기
+    writeHtml : function(){
+        if(this.menuWrap.nextAll('div').length > 0){
+            this.menuWrap.nextAll('div').remove();
+        }
+        console.log(this.submenuValue);
+        switch(this.submenuValue){
 
-// 서브메뉴 갱신부터 살펴보기
+            case 'default': 
+                this.saveBtn.style.display ='none';
+                this.deleteBtn.style.display ='none';
+                break;
+
+            case 'neue Text(new text)': 
+                this.menuWrap.after(this.textInsertWrap);
+                this.saveBtn.style.display ='block';
+                break;
+
+            case 'Änderung(modify)':
+                this.menuWrap.after(this.textInsertWrap);
+                this.saveBtn.style.display ='block';
+                break;
+
+            case 'Löschung(delete)':
+                this.saveBtn.style.display ='none';
+                this.deleteBtn.style.display ='block';
+                break;
+            
+        }
+    }
+}
+
+
 
 
 // ------------------------------------Gallery--------------------
@@ -253,8 +295,8 @@ GallerySubMenuEvent.prototype = {
 //서브메뉴 갱신하기
 function WriteSubmenu(submenu, mainValue) {
     this.mainValue = mainValue;
-    this.gallerySubmenuTemplate = $('#subtitle_template')[0].innerHTML;
-    this.gallerySubmenuOption = $('#select_options')[0].innerHTML;
+    this.submenuTemplate = $('#subtitle_template')[0].innerHTML;
+    this.submenuOption = $('#select_options')[0].innerHTML;
     this.mainMenuWrap = $(".main_menu_wrap");
     this.deleteInsertWrap = $('.delete_insert_wrap')[0];
     this.saveBtn = $('.save_btn')[0];
@@ -269,7 +311,7 @@ WriteSubmenu.prototype = {
         for(i=0; i<this.submenu.length; i++){
             var optionValue = this.submenu[i];
             var optionInnerText = optionValue.charAt(0).toUpperCase() + optionValue.slice(1);
-            var replaceOptions = this.gallerySubmenuOption.replace('{options}', optionValue)
+            var replaceOptions = this.submenuOption.replace('{options}', optionValue)
                                                           .replace('{upper_options}', optionInnerText);
             options += replaceOptions;
         }
@@ -283,8 +325,12 @@ WriteSubmenu.prototype = {
         }
         this.saveBtn.style.display = 'none';
         this.deleteBtn.style.display = 'none';
-        var submenuHtml = this.gallerySubmenuTemplate.replaceAll('{main_value}',this.mainValue);
+        var upperMainValue =this.mainValue.charAt(0).toUpperCase() + this.mainValue.slice(1);
+        var submenuHtml = this.submenuTemplate.replaceAll('{main_value}',upperMainValue);
         this.mainMenuWrap.after(submenuHtml);
+        if(this.mainValue === "news"){
+            $(".option_target").next().remove();
+        }
         this.makeOptions();
         for(i=0; i<$('.submenu_wrap').nextAll('div').length; i++){
             $('.submenu_wrap').nextAll('div')[i].style.display = 'none';
@@ -321,19 +367,19 @@ function mainMenuEvent(){
             new WriteSubmenu(examGallerySubmenu,'Gallery');
             break;
 
-        case 'News':
+        case 'news':
             var examNewsSubmenu = ['neue Text(new text)','Änderung(modify)','Löschung(delete)'];
             console.log(mainMenu.value);
             new WriteSubmenu(examNewsSubmenu,mainMenu.value);
             break;
         
-        case 'Biography':
+        case 'biography':
             var examBiographySubmenu = ['basis','einzelausstellungen','gruppenausstellungen','lesungen','ankäufe - Stipendien'];
             console.log(mainMenu.value);
             new WriteSubmenu(examBiographySubmenu,mainMenu.value);
             break;
         
-        case 'Contact':
+        case 'contact':
             console.log(mainMenu.value);
             break;
     }

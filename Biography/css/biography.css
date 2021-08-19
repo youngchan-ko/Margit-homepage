@@ -10010,23 +10010,38 @@ h3 {
 
 
 
-
+.standard_wrap{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 
 
 .biography_item{
-  margin: 10px 0;
+  height: 30px;
+  line-height: 30px;
 }
 
 .year{
   display: inline-block;
-  padding-left: 75px;
-  font-weight: bold;
+  padding-left: 116px;
+  /* font-weight: bold; */
   font-size: 20px;
   width: 300px;
 }
 
 .biography_text{
   display: inline-block;
+}
+
+.accordion-header button{
+  font-size: 18px;
+  padding-left: 75px;
+  font-weight: bold;
+  color: #F7381A;
+}
+
+.accordion-body{
+  padding-left: 0;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px){

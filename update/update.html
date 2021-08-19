@@ -77,9 +77,9 @@
                     <option value="skulptur">SKULPTUR</option>
                     <option value="zeichnung">ZEICHNUNG</option>
                     <option value="objekt">OBJEKT</option>
-                    <option value="News">TEXT</option>
-                    <option value="Biography">BIOGRAFIE</option>
-                    <option value="Contact">KONTAKT</option>
+                    <option value="news">TEXT</option>
+                    <option value="biography">BIOGRAFIE</option>
+                    <option value="contact">KONTAKT</option>
                 </select>
             </div>
         </div>
@@ -120,19 +120,25 @@
         <script src="../jquery3_5_1.js"></script>
         <script src="../bootstrap4_6_0.js"></script>
         <script src="script/update.js"></script>
-        <script>
-            ClassicEditor
-            .create( document.querySelector( '#news_update_textarea' ) )
-            .catch( error => {
-                console.error( error );
-            } );
-        </script>
         
-        <script type="rv-template" id="news_textarea">
-            <div class="news_update_wrap" id="news_update_textarea">
-                
+        <template id="news_textarea">
+            <div class="news_update_wrap">
+                <div class="new_title_wrap">
+                    <label for="news_title_input">der Titel : </label>
+                    <input type="text" name="news_title" id="news_title_input">
+                </div>
+                <div id="news_update_textarea">
+                    
+                </div>
+                <script>
+                    ClassicEditor
+                    .create( document.querySelector( '#news_update_textarea' ) )
+                    .catch( error => {
+                        console.error( error );
+                    } );
+                </script>
             </div>
-        </script>
+        </template>
 
         <!-- 바이오그라피 삭제 선택시 테이블 템플릿 -->
         <script type="rv-template" id="biography_table_wrap">
