@@ -10132,10 +10132,15 @@ transition: none;-moz-transition: none;-webkit-transition: none;}
   text-align: center;
 }
 
+.toggle-thumbs{
+  display: none;
+}
+
 @media screen and (max-width: 768px){
   .navbar-brand{
     font-size: 20px;
     line-height: 50px;
     padding: 0;
   }
+
 }
