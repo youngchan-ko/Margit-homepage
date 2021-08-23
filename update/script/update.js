@@ -346,6 +346,9 @@ function mainMenuEvent(){
     if($('.menu_wrap').nextAll('div').length > 0){
         $('.menu_wrap').nextAll('div').remove();
     }
+    if($('.menu_wrap').nextAll('table').length > 0){
+        $('.menu_wrap').nextAll('table').remove();
+    }
     switch(mainMenu.value){
         case 'default':
             $('.menu_wrap').nextAll('div').remove();

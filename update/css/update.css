@@ -10093,3 +10093,11 @@ h3 {
 .ck-editor__editable{
   min-height: 400px;
 }
+
+.new_title_wrap{
+  margin-bottom: 20px;
+}
+
+#news_title_input{
+  width: 100%;
+}
