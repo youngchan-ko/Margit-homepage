@@ -10101,3 +10101,21 @@ h3 {
 #news_title_input{
   width: 100%;
 }
+
+.contact_modify_wrap div{
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+
+.contact_modify_wrap div label {
+  display: block;
+  color: #F7381A;
+}
+
+.contact_modify_wrap div input{
+  width: 100%;
+}
+
+.contact_modify_wrap div textarea{
+  width: 100%;
+}

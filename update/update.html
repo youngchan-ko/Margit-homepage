@@ -7,7 +7,8 @@
         <meta name="author" content="" />
         <title>Margit Feyerer-Fleischanderl-Update</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Favicon-->
+        <link rel="shortcut icon" href="#">
         <!-- Core theme CSS (includes Bootstrap)-->
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
         <link href="../bootstrap5.0.2.min.css" rel="stylesheet" />
@@ -110,6 +111,64 @@
         <script src="../jquery3_5_1.js"></script>
         <script src="../bootstrap4_6_0.js"></script>
         <script src="script/update.js"></script>
+
+        <script type="rv-template" id="contact_wrap">
+            <div class="contact_modify_wrap">
+                <div class="contact_street_wrap">
+                    <label for="contact_street_input">Straße : </label>
+                    <input type="text" value="{street}" name="street_input" id="contact_street_input">
+                </div>
+    
+                <div class="contact_housenumber_wrap">
+                    <label for="contact_housenumber_input">HausNummer : </label>
+                    <input type="text" value="{housenumber}" name="housenumber_input" id="contact_housenumber_input">
+                </div>
+    
+                <div class="contact_postcode_wrap">
+                    <label for="contact_postcode_input">Postleitzahl : </label>
+                    <input type="text" value="{postcode}" name="postcode_input" id="contact_postcode_input">
+                </div>
+    
+                <div class="contact_phone_wrap">
+                    <label for="contact_phone_input">Telefonnummer : </label>
+                    <input type="text" value="{phone}" name="phone_input" id="contact_phone_input">
+                </div>
+    
+                <div class="contact_email_wrap">
+                    <label for="contact_email_input">Email : </label>
+                    <input type="text" value="{email}" name="email_input" id="contact_email_input">
+                </div>
+    
+                <div class="contact_homepage_owner_wrap">
+                    <label for="contact_homepage_owner_input">Medieninhaber und Herausgeber : </label>
+                    <input type="text" value="{homepage_owner}" name="homepage_owner_input" id="contact_homepage_owner_input">
+                </div>
+    
+                <div class="contact_homepage_producer_wrap">
+                    <label for="contact_homepage_producer_input">Gestaltung : </label>
+                    <input type="text" value="{homepage_producer}" name="homepage_producer_input" id="contact_homepage_producer_input">
+                </div>
+    
+                <div class="contact_Homepage_category_wrap">
+                    <label for="contact_Homepage_category_input">Grundlegende Richtung : </label>
+                    <input type="text" value="{Homepage_category}" name="Homepage_category_input" id="contact_Homepage_category_input">
+                </div>
+    
+                <div class="contact_liability_text_wrap">
+                    <label for="contact_liability_text_input">Haftung : </label>
+                    <textarea name="liability_text_input" id="contact_liability_text_input" cols="30" rows="10" >
+                        {liability_text}
+                    </textarea>
+                </div>
+    
+                <div class="contact_links_text_wrap">
+                    <label for="contact_links_text_input">Links : </label>
+                    <textarea name="links_text_input" id="contact_links_text_input" cols="" rows="10" >
+                        {links_text}
+                    </textarea>
+                </div>
+            </div>
+        </script>
         
         <template id="news_textarea">
             <div class="news_update_wrap">

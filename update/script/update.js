@@ -1,6 +1,27 @@
 // ---------------------------------------Contact-------------------------
+//컨택트부터 작성하기
+function ContactEvent(){
+    this.menuWrap = $('.menu_wrap');
+    this.mainMenuWrap = $('.main_menu_wrap');
+    this.contactWrap = $('#contact_wrap')[0].innerHTML;
+    this.saveBtn = $('.save_btn');
+    this.deleteBtn = $('.delete_btn');
+    this.connectAjax();
+    this.writeContactWrap();
+}
+ContactEvent.prototype = {
+    connectAjax : function(){
 
+    },
 
+    writeContactWrap : function(){
+        if(this.mainMenuWrap.nextAll('div').length > 0){
+            this.mainMenuWrap.nextAll('div').css('display','none');
+        }
+        this.deleteBtn.css('display', 'none');
+        this.saveBtn.css('display', 'block')
+    }
+}
 
 // ---------------------------------------Biography---------------------
 
@@ -383,6 +404,7 @@ function mainMenuEvent(){
             break;
         
         case 'contact':
+            new ContactEvent();
             console.log(mainMenu.value);
             break;
     }
