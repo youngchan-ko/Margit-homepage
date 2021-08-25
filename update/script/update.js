@@ -1,5 +1,5 @@
 // ---------------------------------------Contact-------------------------
-//컨택트부터 작성하기
+//ContactEvent.connectAjax ajax로 데이터 받아와서 뿌리는걸로 바꿔주기
 function ContactEvent(){
     this.menuWrap = $('.menu_wrap');
     this.mainMenuWrap = $('.main_menu_wrap');
@@ -7,19 +7,46 @@ function ContactEvent(){
     this.saveBtn = $('.save_btn');
     this.deleteBtn = $('.delete_btn');
     this.connectAjax();
-    this.writeContactWrap();
+    
 }
 ContactEvent.prototype = {
     connectAjax : function(){
-
+        let testArray = [
+            {"Straße":"Humboldtstraße", 
+            "HausNummer":"15", 
+            "Postleitzahl":"A-4020", 
+            "Stadt":"Linz",
+            "Email":"fey.flei@aon.at",
+            "TelEmailefonnummer":"+43 650 389 4710",
+            "homepage_owner":"Margit Feyerer-Fleischanderl",
+            "homepage_producer":"Youngchan Kim",
+            "Homepage_category":"Persönliche Homepage der Künstlerin",
+            "liability_text":"Sämtliche Texte auf der Website wurden sorgfältig geprüft. Dessen ungeachtet kann keine Garantie für Richtigkeit, Vollständigkeit und Aktualität der Angaben übernommen werden.",
+            "links_text":"Links auf diese Website - auch auf Seiten in der Tiefe - sind erwünscht. Eine Übernahme des Hauptfensters in ein Frame-Set des Linksetzers ist unzulässig. Eigene Links auf fremde Seiten stellen nur Wegweiser zu diesen Seiten dar; sie werden deshalb regelmäßig mittels externem Link in einem eigenen Browserfenster dargestellt. Der Herausgeber identifiziert sich nicht mit dem Inhalt der Seiten, auf die gelinkt wird und übernimmt dafür keine Haftung; er setzt bewusst auch Links auf Seiten, auf denen andere Meinungen vertreten werden, um dem Leser ein möglichst breites Spektrum zu bieten. Sollte eine der Seiten, auf die gelinkt wird, bedenkliche oder rechtswidrige Inhalte aufweisen, wird um Mitteilung ersucht; in einem solchen Falle wird der Link sofort gelöscht."
+            }
+        ];
+        this.writeContactWrap(testArray);
     },
 
-    writeContactWrap : function(){
+    writeContactWrap : function(contactData){
         if(this.mainMenuWrap.nextAll('div').length > 0){
             this.mainMenuWrap.nextAll('div').css('display','none');
         }
+        
+        let editContactHtml = this.contactWrap
+            .replace('{street}',contactData[0].Straße)
+            .replace('{housenumber}',contactData[0].HausNummer)
+            .replace('{postcode}',contactData[0].Postleitzahl)
+            .replace('{phone}',contactData[0].Telefonnummer)
+            .replace('{email}',contactData[0].Email)
+            .replace('{homepage_owner}',contactData[0].homepage_owner)
+            .replace('{homepage_producer}',contactData[0].homepage_producer)
+            .replace('{Homepage_category}',contactData[0].Homepage_category)
+            .replace('{liability_text}',contactData[0].liability_text)
+            .replace('{links_text}',contactData[0].links_text);
         this.deleteBtn.css('display', 'none');
-        this.saveBtn.css('display', 'block')
+        this.saveBtn.css('display', 'block');
+        this.menuWrap.after(editContactHtml);
     }
 }
 
@@ -157,11 +184,13 @@ NewsSubMenuEvent.prototype = {
             case 'neue Text(new text)': 
                 this.menuWrap.after(this.textInsertWrap);
                 this.saveBtn.style.display ='block';
+                this.deleteBtn.style.display ='none';
                 break;
 
             case 'Änderung(modify)':
                 this.menuWrap.after(this.textInsertWrap);
                 this.saveBtn.style.display ='block';
+                this.deleteBtn.style.display ='none';
                 break;
 
             case 'Löschung(delete)':
